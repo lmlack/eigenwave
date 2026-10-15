@@ -175,6 +175,8 @@ main { max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; }
 .hero h1 { margin: 10px 0 14px; font-size: var(--text-3xl); line-height: 1.15; letter-spacing: -0.01em; }
 .lede { font-size: var(--text-lg); color: var(--fg-muted); margin: 0 0 24px; }
 .course-map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+/* An odd card left alone on the last row sits in the middle. */
+.part-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
 .part-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow); }
 .part-card h2 { margin: 4px 0 10px; font-size: var(--text-lg); }
 .part-card ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
@@ -280,6 +282,7 @@ main { max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; }
   .hero h1 { font-size: var(--text-2xl); }
   .lede { font-size: var(--text-base); }
   .course-map { grid-template-columns: minmax(0, 1fr); }
+  .part-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   .panel { padding: 14px; }
   .lesson-head h1 { font-size: var(--text-xl); }
 }
