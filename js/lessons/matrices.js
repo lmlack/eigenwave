@@ -84,7 +84,7 @@ export function mount(root) {
 
   /* ---------- Figure 2: one vector ---------- */
   root.append(prose(`
-    <p>Follow one vector ${inl("x = (x_1, x_2)")} through the machine. It's ${inl("x_1")} steps along ${inl("(1, 0)")} plus ${inl("x_2")} steps along ${inl("(0, 1)")}, so after the matrix it's ${inl("x_1")} steps along the first column plus ${inl("x_2")} steps along the second. That's all <b>matrix times vector</b> is: a linear combination of the columns, with the vector's entries as the amounts.</p>`));
+    <p>Follow one vector ${inl("x = (x_1, x_2)")} through the machine. It's ${inl("x_1")} steps along ${inl("(1, 0)")} plus ${inl("x_2")} steps along ${inl("(0, 1)")}, so after the matrix it's ${inl("x_1")} steps along the first column plus ${inl("x_2")} steps along the second. So <b>matrix times vector</b> is a linear combination of the columns, with the vector's entries as the amounts.</p>`));
   const f2 = figure({ x: [-3, 3], y: [-3, 3], equal: true, aspect: 1, cap: "Before: drag x." });
   const f3 = figure({ x: [-4, 4], y: [-4, 4], equal: true, aspect: 1, cap: "After: A x, built from the columns." });
   const q = f2.plot, r = f3.plot;

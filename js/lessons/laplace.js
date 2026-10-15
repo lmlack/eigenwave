@@ -59,7 +59,7 @@ export function mount(root) {
 
   /* ---------- Figure 3: Laplace = Fourier of x(t) e^{-σt}; the ROC ---------- */
   root.append(prose(`
-    <p>Here's the whole trick. The Laplace transform of ${inl("x(t)")} at ${inl("s = \\sigma + i\\omega")} is the Fourier transform of ${inl("x(t)\\,e^{-\\sigma t}")}. Multiplying by ${inl("e^{-\\sigma t}")} tames a growing signal before Fourier sees it. Pick ${inl("\\sigma")} big enough and even ${inl("e^{t}")} gets squashed down to something that dies out.</p>
+    <p>The Laplace transform of ${inl("x(t)")} at ${inl("s = \\sigma + i\\omega")} is the Fourier transform of ${inl("x(t)\\,e^{-\\sigma t}")}. Multiplying by ${inl("e^{-\\sigma t}")} tames a growing signal before Fourier sees it. Pick ${inl("\\sigma")} big enough and even ${inl("e^{t}")} gets squashed down to something that dies out.</p>
     <p>The values of ${inl("\\sigma")} where that works form the <b>region of convergence</b> (ROC). For a signal that starts at ${inl("t = 0")} and grows like ${inl("e^{at}")}, the ROC is everything to the right of ${inl("\\sigma = a")}. If the ROC includes the ${inl("i\\omega")} axis (${inl("\\sigma = 0")}), the ordinary Fourier transform exists too, and it's just the Laplace transform read off along that axis.</p>`));
   let a = 0.5, sig = 1;
   const f3 = figure({ x: [0, 6], y: [-0.2, 4], aspect: 1.7, xLabel: "t", vAxis: false, cap: "x(t) = e<sup>at</sup> (blue), the weight e<sup>−σt</sup> (dashed), and their product (purple), which is what Fourier sees." });

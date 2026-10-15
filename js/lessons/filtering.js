@@ -19,7 +19,7 @@ export function mount(root) {
   let res = null, H = null, h = null, yTime = null;
 
   root.append(prose(`
-    <p>A <b>filter</b> keeps some frequencies and throws others away. In time, a filter is a convolution: every output sample is a weighted sum of nearby input samples. That's lesson 13's sliding sum, and it's slow to think about.</p>
+    <p>A <b>filter</b> keeps some frequencies and throws others away. In time, a filter is a convolution: every output sample is a weighted sum of nearby input samples. That's lesson 13's sliding sum, which is hard to picture.</p>
     <p>In frequency it's simple. Take the input's spectrum, multiply each frequency by how much the filter lets through, and transform back. Convolution in time is <b>multiplication</b> in frequency. That's the convolution theorem, and it's why engineers draw filters as shapes on a frequency axis.</p>`));
 
   /* ---------- Figure 1: the spectrum and the filter shape ---------- */

@@ -23,8 +23,8 @@ export function mount(root) {
   let data = fftStages(EXAMPLES[ex].x);
 
   root.append(prose(`
-    <p>The DFT of ${inl("N")} samples takes ${inl("N")} sums of ${inl("N")} terms each: ${inl("N^2")} multiplications. For a million samples that's a trillion. The <b>FFT</b> (fast Fourier transform) gets the exact same answer with about ${inl("\\tfrac{N}{2}\\log_2 N")}: ten million. That speedup is why the Fourier transform is everywhere.</p>
-    <p>The idea: split the samples into the even-numbered ones and the odd-numbered ones. Each half has its own DFT, half as long. Those two half-size answers combine into the full answer with one multiplication per pair. Then split each half again, and again, until every piece is one sample long, and a one-sample DFT is just the sample.</p>`));
+    <p>The DFT of ${inl("N")} samples takes ${inl("N")} sums of ${inl("N")} terms each: ${inl("N^2")} multiplications. For a million samples that's a trillion. The <b>FFT</b> (fast Fourier transform) gets the exact same answer with about ${inl("\\tfrac{N}{2}\\log_2 N")}: ten million. That speedup is what makes the Fourier transform practical on long signals.</p>
+    <p>The FFT splits the samples into the even-numbered ones and the odd-numbered ones. Each half has its own DFT, half as long. Those two half-size answers combine into the full answer with one multiplication per pair. Then split each half again, and again, until every piece is one sample long, and a one-sample DFT is just the sample.</p>`));
 
   /* ---------- Butterfly diagram ---------- */
   const f1 = figure({ x: [-1.05, 3.75], y: [-0.7, 7.6], aspect: narrow ? 0.8 : 1.25, grid: false, axes: false, cap: "Inputs on the left in bit-reversed order, outputs on the right. Each stage combines pairs: top gets a + W·b, bottom gets a − W·b." });
@@ -86,8 +86,8 @@ export function mount(root) {
 
   const exSeg = segmented({ label: "Example", options: Object.entries(EXAMPLES).map(([k, v]) => [k, v.name]), value: ex,
     onChange: (v) => { ex = v; data = fftStages(EXAMPLES[v].x); update(); } });
-  const back = button("← Back", () => { stage = Math.max(0, stage - 1); playing = false; update(); });
-  const next = button("Next stage →", () => { stage = Math.min(3, stage + 1); playing = false; update(); }, "solid");
+  const back = button("Previous stage", () => { stage = Math.max(0, stage - 1); playing = false; update(); });
+  const next = button("Next stage", () => { stage = Math.min(3, stage + 1); playing = false; update(); }, "solid");
   const play = button("Play", () => { playing = !playing; if (playing && stage === 3) stage = 0; acc = 0; update(); anim.kick(); });
   const status = el("p", { class: "small", style: "margin:10px 0 0" });
   const anim = animate(f1.el, (dt) => {

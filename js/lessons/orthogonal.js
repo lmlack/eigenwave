@@ -13,7 +13,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>Last lesson, finding coordinates meant solving ${inl("B c = x")}, which takes an inverse matrix. There's a kind of basis where you don't need any of that: one whose vectors are at right angles to each other (<b>orthogonal</b>) and each of length 1 (<b>normalized</b>). Together that's an <b>orthonormal</b> basis.</p>
-    <p>In an orthonormal basis, each coordinate is just a dot product: how much ${inl("x")} points along ${inl("q_1")} is ${inl("q_1 \\cdot x")}, and that's the whole answer. Each basis vector can measure its own amount without the others getting in the way.</p>`));
+    <p>In an orthonormal basis, each coordinate is just a dot product: how much ${inl("x")} points along ${inl("q_1")} is ${inl("q_1 \\cdot x")}. Each basis vector can measure its own amount without the others getting in the way.</p>`));
 
   /* ---------- Figure 1: orthonormal vs slanted ---------- */
   const qv = () => {
@@ -75,7 +75,7 @@ export function mount(root) {
 
   /* ---------- Figure 2: a signal in an orthonormal basis ---------- */
   root.append(prose(`
-    <p>The same trick works with eight numbers. Below are two orthonormal bases of eight signals each. The <b>Haar</b> basis is made of blocky steps: an average, then differences at coarser and finer scales. The <b>cosine</b> basis is made of waves, from flat to fast. In either one, the amount of each basis signal in your signal is one dot product.</p>
+    <p>The same idea works with eight numbers. Below are two orthonormal bases of eight signals each. The <b>Haar</b> basis is made of blocky steps: an average, then differences at coarser and finer scales. The <b>cosine</b> basis is made of waves, from flat to fast. In either one, the amount of each basis signal in your signal is one dot product.</p>
     <p>Keep only the first few amounts and add those pieces back up, and you get an approximation. Keep all eight and you get the signal back exactly. Swap the cosine basis for complex waves and this is the Fourier transform.</p>`));
 
   const BASES = { haar: haar8(), cosine: cosine8() };

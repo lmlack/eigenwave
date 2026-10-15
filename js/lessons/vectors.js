@@ -61,7 +61,7 @@ export function mount(root) {
   /* ---------- Figure 2: a signal is a combination of impulses ---------- */
   root.append(prose(`
     <p>Now take eight numbers instead of two. You can't draw them as one arrow, so draw each number as a stick at its position: that's a <b>signal</b>. It's still a vector, and it's still a linear combination: eight amounts of the eight <b>unit impulses</b> ${inl("e_0, e_1, \\dots, e_7")}, where ${inl("e_n")} is 1 at position ${inl("n")} and 0 everywhere else.</p>
-    <p>That's the plainest way to build a signal, one impulse at a time. The Fourier transform will build the same signal out of waves instead. Same vector, different building blocks.</p>`));
+    <p>That's the plainest way to build a signal, one impulse at a time. The Fourier transform will build the same vector out of waves instead.</p>`));
 
   const x = [0.5, 1.5, 2, 1, -0.5, -1.5, -1, 0.25];
   let picked = 3;

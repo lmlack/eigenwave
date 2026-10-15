@@ -68,7 +68,7 @@ export function mount(root) {
   /* ---------- Figure 2: how alike are two signals? ---------- */
   root.append(prose(`
     <p>The same recipe works for eight numbers, or eight thousand. Line up two signals, multiply them sample by sample, and add. Where both are positive, or both negative, the product is positive and the total grows. Where they disagree, it shrinks.</p>
-    <p>So the dot product of two signals measures how alike they are. Hold one of them fixed as a <b>template</b> and the dot product tells you how much of that template is in the other signal. That's exactly how the Fourier transform will measure how much of each wave is in a signal.</p>`));
+    <p>So the dot product of two signals measures how alike they are. Hold one of them fixed as a <b>template</b> and the dot product tells you how much of that template is in the other signal. The Fourier transform uses the same idea to measure how much of each wave is in a signal.</p>`));
 
   let tShape = "wave", xShape = "wave", shift = 0;
   const base = SHAPES.wave.slice();

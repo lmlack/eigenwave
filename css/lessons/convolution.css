@@ -2,7 +2,7 @@
 .conv-eq { text-align: center; font-size: 1.35rem; margin: 4px 0 16px; }
 .conv-presets { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 12px; }
 .conv-presets p { margin: 0 0 4px; }
-.conv-read { margin: 10px 0 0; font-family: var(--font-mono); }
+.conv-read { margin: 10px 0 0; }
 .conv-matrix { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding: 4px 0; }
 .cm-block p { margin: 0 0 4px; text-align: center; font-weight: 700; font-size: var(--text-sm); }
 .cm-op { font-size: var(--text-xl); color: var(--fg-subtle); }

@@ -22,7 +22,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>A matrix turns most vectors: ${inl("A x")} points somewhere different from ${inl("x")}. But most matrices have a few special directions that come out pointing the same way they went in, only stretched or shrunk (or flipped). Those are the <b>eigenvectors</b>. The stretch factor is the <b>eigenvalue</b>, ${inl("\\lambda")}: ${inl("A x = \\lambda x")}.</p>
-    <p>Along an eigenvector the matrix is just multiplication by a number. That's why they matter: if you can write a vector as a combination of eigenvectors, applying the matrix is easy. Hold onto that. Waves turn out to be the eigenvectors of every time-invariant system, and that's the whole reason the Fourier transform uses them.</p>`));
+    <p>Along an eigenvector the matrix is just multiplication by a number. That's why they matter: if you can write a vector as a combination of eigenvectors, applying the matrix is easy. This comes back later: waves are the eigenvectors of every time-invariant system, which is why the Fourier transform uses them.</p>`));
 
   /* ---------- Figure 1: x and A x ---------- */
   const f = figure({ x: [-3.2, 3.2], y: [-3, 3], equal: true, aspect: 1.3, cap: "Drag x. The purple arrow is A x. The dashed lines are the eigenvector directions." });
@@ -82,7 +82,7 @@ export function mount(root) {
 
   /* ---------- Figure 2: eigenvalues don't quite meet ---------- */
   root.append(prose(`
-    <p>Here's a strange fact Strang likes to show. Take the symmetric matrix ${inl("\\begin{bmatrix} a & \\varepsilon \\\\ \\varepsilon & -a \\end{bmatrix}")} and slide ${inl("a")} from negative to positive. With ${inl("\\varepsilon = 0")} its two eigenvalues are just ${inl("a")} and ${inl("-a")}, and they cross at zero. Make ${inl("\\varepsilon")} even a little bit nonzero and they stop crossing: they come close, then veer apart. Their eigenvectors swap roles as they pass.</p>`));
+    <p>Strang shows a surprising example. Take the symmetric matrix ${inl("\\begin{bmatrix} a & \\varepsilon \\\\ \\varepsilon & -a \\end{bmatrix}")} and slide ${inl("a")} from negative to positive. With ${inl("\\varepsilon = 0")} its two eigenvalues are just ${inl("a")} and ${inl("-a")}, and they cross at zero. Make ${inl("\\varepsilon")} even a little bit nonzero and they stop crossing: they come close, then veer apart. Their eigenvectors swap roles as they pass.</p>`));
   let aa = -0.6, eps = 0.25;
   const g = figure({ x: [-2, 2], y: [-2.2, 2.2], aspect: 1.8, xLabel: "a", yLabel: "λ", cap: "Both eigenvalues as a changes. Faint: what they'd do with ε = 0." });
   const q = g.plot;

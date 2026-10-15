@@ -75,8 +75,8 @@ async function route() {
 
   const prev = LESSONS[lesson.n - 2];
   const next = LESSONS[lesson.n];
-  setFoot($("#lesson-prev"), prev ? `#${prev.id}` : "#home", prev ? `← ${prev.title}` : "← All lessons");
-  setFoot($("#lesson-next"), next ? `#${next.id}` : "#home", next ? `Next: ${next.title} →` : "Back to all lessons →");
+  setFoot($("#lesson-prev"), prev ? `#${prev.id}` : "#home", prev ? `Previous: ${prev.title}` : "All lessons");
+  setFoot($("#lesson-next"), next ? `#${next.id}` : "#home", next ? `Next: ${next.title}` : "Back to all lessons");
 
   showSources(id);
   const body = $("#lesson-body");

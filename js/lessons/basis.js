@@ -71,7 +71,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>Finding the new coordinates means solving ${inl("c_1 b_1 + c_2 b_2 = x")}. Put ${inl("b_1")} and ${inl("b_2")} side by side as the columns of a matrix ${inl("B")}, and that's ${inl("B c = x")}. So ${inl("c = B^{-1} x")}: the inverse matrix converts standard coordinates into the new ones.</p>
-    <p>That's the whole story of the Fourier transform, one size up. A signal has standard coordinates: its values, one per sample. The Fourier transform solves for its coordinates in a basis made of waves. In two lessons you'll see a basis where you don't need ${inl("B^{-1}")} at all.</p>`));
+    <p>The Fourier transform does the same thing with more numbers. A signal has standard coordinates: its values, one per sample. The Fourier transform solves for its coordinates in a basis made of waves. In two lessons you'll see a basis where you don't need ${inl("B^{-1}")} at all.</p>`));
 
   const m = mathPanel([
     { tex: "x = c_1 b_1 + c_2 b_2", note: "x as a combination of the new basis vectors. The amounts c₁ and c₂ are its new coordinates." },

@@ -59,7 +59,7 @@ export function mount(root) {
 
   /* ---------- Figure 2: real exponential ---------- */
   root.append(prose(`
-    <p>Next, the <b>real exponential</b> ${inl("x[n] = a^n")}. Each sample is the one before it times ${inl("a")}. That one number decides everything: bigger than 1 and it grows, between 0 and 1 and it dies away, negative and it flips sign every step.</p>`));
+    <p>Next, the <b>real exponential</b> ${inl("x[n] = a^n")}. Each sample is the one before it times ${inl("a")}. The value of ${inl("a")} decides what happens: bigger than 1 and it grows, between 0 and 1 and it dies away, negative and it flips sign every step.</p>`));
   let a = 0.8;
   const N2 = Array.from({ length: 21 }, (_, i) => i);
   const f2 = figure({ x: [-0.6, 20.6], y: [-3, 3], aspect: asp(2.6), xTicks: tk(2), vAxis: false, cap: "aⁿ for n = 0 … 20. Values past ±3 are cut off at the edge." });

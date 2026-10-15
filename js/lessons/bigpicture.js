@@ -269,7 +269,7 @@ export function mount(root) {
     pb.draw((p) => cur.b(p, v));
     const l = byId[cur.lesson];
     go.href = `#${l.id}`;
-    go.textContent = `Go to lesson ${l.n}: ${l.title} →`;
+    go.textContent = `Go to lesson ${l.n}: ${l.title}`;
   }
   function setPlot(p, r) {
     p.o.equal = !!r.equal;
@@ -287,7 +287,7 @@ export function mount(root) {
   ]));
 
   const m = mathPanel([
-    { html: "<b>One idea, six ways:</b> how much of each exponential is in the signal." },
+    { html: "All six transforms measure how much of each exponential is in the signal." },
     { tex: "X(s) = \\int x(t)\\,e^{-st}\\,dt \\;\\xrightarrow{\\;s\\,=\\,i\\omega\\;}\\; X(\\omega) = \\int x(t)\\,e^{-i\\omega t}\\,dt",
       note: "Laplace to Fourier: keep only the steady waves." },
     { tex: "X(z) = \\sum x[n]\\,z^{-n} \\;\\xrightarrow{\\;z\\,=\\,e^{i\\omega}\\;}\\; X(e^{i\\omega}) = \\sum x[n]\\,e^{-i\\omega n}",

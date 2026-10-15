@@ -223,7 +223,7 @@ export function mount(root) {
     { tex: "X(z) = \\sum_{n=0}^{\\infty} x[n]\\, z^{-n}",
       note: "The (one-sided) z-transform: how much of each spiral zⁿ the signal holds." },
     { tex: "X(r e^{i\\theta}) = \\sum_{n} \\big(x[n]\\, r^{-n}\\big)\\, e^{-i\\theta n}",
-      note: "Split z into its size and angle: it's the DTFT of the damped signal x[n] r<sup>−n</sup>. Same trick as the Laplace transform." },
+      note: "Split z into its size and angle: it's the DTFT of the damped signal x[n] r<sup>−n</sup>, as with the Laplace transform." },
     { tex: "|z| = 1:\\quad X(e^{i\\theta}) = \\sum_n x[n]\\, e^{-i\\theta n} = \\text{the DTFT}",
       note: "On the unit circle the damping is gone, and what's left is the discrete-time Fourier transform." },
     { id: "z", tex: "" },

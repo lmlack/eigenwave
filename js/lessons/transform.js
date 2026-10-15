@@ -13,7 +13,7 @@ export function mount(root) {
   let T = 4, tau = 1, scaled = true, envelope = true, F = 3;
 
   root.append(prose(`
-    <p>The Fourier series only works for signals that repeat. Most signals don't: a clap, a single pulse, a word. The trick is to pretend they repeat, with a period so long the copies never meet, and see what happens to the series as the period grows.</p>
+    <p>The Fourier series only works for signals that repeat. Most signals don't: a clap, a single pulse, a word. The way around this is to pretend they repeat, with a period so long the copies never meet, and see what happens to the series as the period grows.</p>
     <p>Take a train of pulses, each ${inl("\\tau")} wide, one every ${inl("T")} seconds. Its harmonics sit at frequencies ${inl("k/T")}: whole multiples of one repeat per period. Stretch ${inl("T")} and they get closer together.</p>`));
 
   /* ---------- Time and frequency ---------- */
@@ -62,7 +62,7 @@ export function mount(root) {
 
   /* ---------- Parseval ---------- */
   root.append(prose(`
-    <p>Energy doesn't care how you count it. The energy of one pulse is ${inl("\\int |x(t)|^2 dt = \\tau")} (height 1 squared, for ${inl("\\tau")} seconds). Count it in frequency instead, adding ${inl("|X(f)|^2")} across frequencies, and you get the same number. That's <b>Parseval's theorem</b>. It's the Pythagorean theorem for an orthogonal basis: the squared length of a vector is the sum of its squared coordinates.</p>`));
+    <p>Energy comes out the same whether you count it in time or in frequency. The energy of one pulse is ${inl("\\int |x(t)|^2 dt = \\tau")} (height 1 squared, for ${inl("\\tau")} seconds). Count it in frequency instead, adding ${inl("|X(f)|^2")} across frequencies, and you get the same number. That's <b>Parseval's theorem</b>. It's the Pythagorean theorem for an orthogonal basis: the squared length of a vector is the sum of its squared coordinates.</p>`));
   const f3 = figure({ x: [0, 1.6], y: [-0.5, 2.5], aspect: narrow ? 2 : 3.4, grid: false, axes: false, cap: "Top: the pulse's energy, counted in time. Bottom: counted in frequency, up to ±F. The frequency count climbs toward the time count." });
   const p3 = f3.plot;
   p3.draw((p) => {

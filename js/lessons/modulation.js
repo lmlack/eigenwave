@@ -94,7 +94,7 @@ export function mount(root) {
 
   /* ---------- Two stations ---------- */
   root.append(prose(`
-    <p>Now two stations. Each multiplies its own message by its own carrier, and the two signals simply add in the air. A receiver tunes to one by multiplying by that station's carrier and low-passing. That's <b>frequency-division multiplexing</b>: stations take turns in frequency, not in time.</p>
+    <p>Now two stations. Each multiplies its own message by its own carrier, and the two signals add in the air. A receiver tunes to one by multiplying by that station's carrier and low-passing. That's <b>frequency-division multiplexing</b>: stations take turns in frequency, not in time.</p>
     <p>It works as long as their spectra don't overlap. Each message is about ${inl(`${BANDWIDTH}`)} Hz wide, so each station takes up ${inl(`2 \\times ${BANDWIDTH}`)} Hz around its carrier. Put the carriers too close and the slices overlap. Then no filter can pull them apart.</p>`));
 
   let fa = 15, fb = 35;
@@ -145,7 +145,7 @@ export function mount(root) {
     ["\\text{RMS}", "root-mean-square error: the typical size of the difference"],
   ]);
   root.append(m.el);
-  root.append(upNext(`that's the end of the course for now. Head back to <a href="#home">all lessons</a>. Oppenheim's later chapters take the same ideas further: the Laplace transform and the z-transform let the frequency be complex too, which is how engineers design filters and check whether a feedback loop is stable.`));
+  root.append(upNext(`the Laplace transform, which lets the frequency be complex too. Engineers use it, and the z-transform after it, to design filters and to check whether a feedback loop is stable.`));
 
   function update() {
     y = modulate(m1, fc);

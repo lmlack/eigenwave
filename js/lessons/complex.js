@@ -20,7 +20,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>A complex number is a pair of numbers, ${inl("z = x + iy")}, drawn as a point in a plane: ${inl("x")} across (the <b>real</b> part) and ${inl("y")} up (the <b>imaginary</b> part). The one new rule is ${inl("i^2 = -1")}.</p>
-    <p>So far that's just a 2D vector. What makes it more is multiplication. Describe ${inl("z")} by its length ${inl("r")} and its angle ${inl("\\theta")} instead. Then multiplying two complex numbers <b>multiplies their lengths and adds their angles</b>. Multiplying by a number of length 1 is a pure turn. That's the whole reason waves and complex numbers fit together so well.</p>`));
+    <p>So far that's just a 2D vector. What makes it more is multiplication. Describe ${inl("z")} by its length ${inl("r")} and its angle ${inl("\\theta")} instead. Then multiplying two complex numbers <b>multiplies their lengths and adds their angles</b>. Multiplying by a number of length 1 is a pure turn. This is why complex numbers are so useful for describing waves.</p>`));
 
   /* ---------- Figure 1: z, w and z w ---------- */
   const f1 = figure({ x: [-3, 3], y: [-3, 3], equal: true, aspect: 1.3, cap: "Drag z and w. The orange arrow is the product z w." });

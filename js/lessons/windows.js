@@ -87,7 +87,7 @@ export function mount(root) {
 
   root.append(tryIt([
     "Set f₀ to 4.00. Every orange dot but one sits at the bottom: a clean spike. Now 4.50: the dots climb the curve's side lobes, and every bin gets some.",
-    "At 4.50, switch Rectangular → Hann. The side lobes drop from about −13 dB to −31 dB. The price: the main peak gets twice as wide.",
+    "At 4.50, switch the window from Rect to Hann. The side lobes drop from about −13 dB to −31 dB, but the main peak gets twice as wide.",
     "Turn on zero padding 8×. The green dots trace the curve more finely, but the curve itself doesn't change. Padding interpolates; it doesn't add resolution.",
     "Add a second sine, 100× weaker, 3 bins up. With no window it's buried under the first sine's side lobes. With Blackman it stands out.",
   ]));

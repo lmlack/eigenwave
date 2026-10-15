@@ -16,7 +16,7 @@ export function mount(root) {
   let res = denoise(sig.noisy, thr);
 
   root.append(prose(`
-    <p>Here's a signal that's mostly noise: two steady tones, at 12 Hz and 31 Hz, buried under random jitter. In time it looks like a mess. You can't see the tones at all.</p>
+    <p>This signal is mostly noise: two steady tones, at 12 Hz and 31 Hz, buried under random jitter. In time it looks like a mess. You can't see the tones at all.</p>
     <p>In frequency it's a different picture. Each tone puts all its energy into one frequency, so it sticks up as a tall spike. The noise spreads its energy thinly over every frequency, so it's a low, even floor. Draw a line between the spikes and the floor, keep only what's above it, and transform back. That's FFT denoising, and it works because the signal and the noise look so different in frequency.</p>`));
 
   /* ---------- Figure 1: the power spectrum and the threshold ---------- */

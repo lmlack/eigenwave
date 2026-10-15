@@ -25,8 +25,8 @@ export function mount(root) {
 
   root.append(prose(`
     <p>One Fourier transform of a whole recording tells you <i>which</i> frequencies are in it, but not <i>when</i>. A tune and the same notes played backwards have the same spectrum.</p>
-    <p>The fix is to chop the signal into short overlapping pieces and take a spectrum of each one. Stack those spectra side by side and you get a <b>spectrogram</b>: time across, frequency up, brightness for how strong each frequency is right then. That's the <b>short-time Fourier transform</b> (STFT), and it's what every music app and speech recognizer looks at.</p>
-    <p>The catch is the length of the pieces. You'll see it as soon as you change the window length below.</p>`));
+    <p>The fix is to chop the signal into short overlapping pieces and take a spectrum of each one. Stack those spectra side by side and you get a <b>spectrogram</b>: time across, frequency up, brightness for how strong each frequency is right then. That's the <b>short-time Fourier transform</b> (STFT), and it's widely used to look at music and speech.</p>
+    <p>The length of the pieces matters, as you'll see when you change the window length below.</p>`));
 
   /* ---------- Waveform ---------- */
   const fW = figure({ x: [0, DUR], y: [-1.3, 1.3], aspect: narrow ? 2.6 : 4.2, xTicks: 0.5, vAxis: false, ticks: true,
@@ -92,7 +92,7 @@ export function mount(root) {
 
   /* ---------- Uncertainty ---------- */
   root.append(prose(`
-    <p>That trade-off isn't a flaw in the spectrogram. It's built into waves. A pulse that's short in time is made of a wide spread of frequencies, and a narrow spread of frequencies can only make a long pulse. Squeeze one and the other spreads out.</p>
+    <p>That trade-off comes from waves themselves. A pulse that's short in time is made of a wide spread of frequencies, and a narrow spread of frequencies can only make a long pulse. Squeeze one and the other spreads out.</p>
     <p>A <b>Gaussian</b> pulse, the bell curve, is the best you can do: the product of its two widths is the smallest any signal can have. Slide its width and watch the product stay put. That fixed limit is the <b>uncertainty principle</b>. It's the same one as in quantum mechanics, where a particle's position and momentum play the roles of time and frequency.</p>`));
 
   let sigma = 0.02;

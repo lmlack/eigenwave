@@ -28,7 +28,7 @@ export function mount(root) {
   let h, A, H, vin, vout, rnd;
 
   root.append(prose(`
-    <p>Convolution can reshape a signal completely. But some inputs come out of <i>every</i> LTI system with their shape untouched: only bigger or smaller, and shifted along. Those are the complex exponentials ${inl("e^{i\\omega n}")}, and their real parts, sines and cosines. That's the whole reason Fourier analysis uses waves.</p>
+    <p>Convolution can reshape a signal completely. But some inputs come out of <i>every</i> LTI system with their shape untouched: only bigger or smaller, and shifted along. Those are the complex exponentials ${inl("e^{i\\omega n}")}, and their real parts, sines and cosines. This is why Fourier analysis uses waves.</p>
     <p>To see it with a matrix, wrap the signal around: sample ${inl("N")} comes right after sample ${inl("N-1")} again. Then convolution with ${inl("h")} is a <b>circulant</b> matrix: each column is the one before it, rotated down by one. Lesson 6 called a vector that a matrix only stretches an <b>eigenvector</b>. The Fourier vectors are eigenvectors of every circulant matrix, all at once.</p>`));
 
   /* ---------- Controls ---------- */

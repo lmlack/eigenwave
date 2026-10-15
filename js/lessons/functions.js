@@ -78,8 +78,8 @@ export function mount(root) {
 
   /* ---------- Figure 2: draw a function, project it ---------- */
   root.append(prose(`
-    <p>Here's why perpendicular matters. If your building blocks are perpendicular, finding how much of each one is in a function is just an inner product, one block at a time. No equations to solve. The amount of ${inl("\\sin kx")} in ${inl("f")} is ${inl("\\langle f, \\sin kx\\rangle")} divided by ${inl("\\langle \\sin kx, \\sin kx\\rangle = \\pi")}.</p>
-    <p>Draw any function below. The page takes its inner product with ${inl("1")}, ${inl("\\cos kx")} and ${inl("\\sin kx")} for ${inl("k = 1")} to ${inl("K")}, then adds those pieces back up. That's a <b>Fourier series</b>, and it's just a projection onto perpendicular vectors.</p>`));
+    <p>Perpendicular building blocks make the next step easy: finding how much of each one is in a function is one inner product per block, with no equations to solve. The amount of ${inl("\\sin kx")} in ${inl("f")} is ${inl("\\langle f, \\sin kx\\rangle")} divided by ${inl("\\langle \\sin kx, \\sin kx\\rangle = \\pi")}.</p>
+    <p>Draw any function below. The page takes its inner product with ${inl("1")}, ${inl("\\cos kx")} and ${inl("\\sin kx")} for ${inl("k = 1")} to ${inl("K")}, then adds those pieces back up. That's a <b>Fourier series</b>: a projection onto perpendicular vectors.</p>`));
 
   const M = 256;
   let samples = sampleShape(SHAPES.square, M);

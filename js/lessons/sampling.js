@@ -19,7 +19,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>A computer can't store a smooth wave. It stores <b>samples</b>: the wave's value every ${inl("T")} seconds, ${inl("f_s = 1/T")} times a second. Between the samples, it knows nothing.</p>
-    <p>So here's the question. Is there only one smooth wave through a given set of dots? If the wave is slow enough compared with the sampling, yes. If it isn't, a slower wave fits the very same dots, and once you've sampled there's no way to tell them apart. The fast wave puts on a disguise. That's <b>aliasing</b>.</p>`));
+    <p>Is there only one smooth wave through a given set of dots? If the wave is slow enough compared with the sampling, yes. If it isn't, a slower wave fits the very same dots, and once you've sampled there's no way to tell them apart. That's <b>aliasing</b>.</p>`));
 
   /* ---------- Figure 1: the sine and its samples ---------- */
   const fT = figure({ x: [0, 2], y: [-1.4, 1.4], aspect: narrow ? 1.6 : 2.5, xTicks: 0.5, vAxis: false, xLabel: "s",

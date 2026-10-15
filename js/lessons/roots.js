@@ -14,7 +14,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>Lesson 7 showed that multiplying by a number of length 1 is a pure turn. Pick the turn that's exactly one ${inl("N")}th of the way around: ${inl("\\omega = e^{2\\pi i/N}")}. Multiply by it ${inl("N")} times and you're back where you started, so ${inl("\\omega^N = 1")}.</p>
-    <p>The powers ${inl("1, \\omega, \\omega^2, \\dots, \\omega^{N-1}")} are the <b>${inl("N")}th roots of unity</b>: ${inl("N")} points spaced evenly around the unit circle. Each one solves ${inl("z^N = 1")}. They're the raw material of the discrete Fourier transform.</p>`));
+    <p>The powers ${inl("1, \\omega, \\omega^2, \\dots, \\omega^{N-1}")} are the <b>${inl("N")}th roots of unity</b>: ${inl("N")} points spaced evenly around the unit circle. Each one solves ${inl("z^N = 1")}. The discrete Fourier transform is built from them.</p>`));
 
   /* ---------- Figure 1: the roots ---------- */
   const f1 = figure({ x: [-1.5, 1.5], y: [-1.5, 1.5], equal: true, aspect: 1.25, ticks: false,
@@ -56,7 +56,7 @@ export function mount(root) {
 
   /* ---------- Complex inner product ---------- */
   root.append(prose(`
-    <p>Complex vectors need one change to the dot product. For real vectors, ${inl("v \\cdot v")} is the squared length, always positive. Try it on ${inl("v = (1, i)")}: ${inl("1 \\cdot 1 + i \\cdot i = 1 - 1 = 0")}. A vector that isn't zero would have length zero. That's no good.</p>
+    <p>Complex vectors need one change to the dot product. For real vectors, ${inl("v \\cdot v")} is the squared length, always positive. Try it on ${inl("v = (1, i)")}: ${inl("1 \\cdot 1 + i \\cdot i = 1 - 1 = 0")}. A vector that isn't zero would have length zero, which makes no sense.</p>
     <p>The fix is to <b>conjugate</b> the first vector (flip the sign of every imaginary part) before multiplying: ${inl("\\langle u, v\\rangle = \\sum \\overline{u_n}\\, v_n")}. Now ${inl("\\langle v, v\\rangle = \\sum |v_n|^2")}, which is real and positive. For ${inl("(1, i)")} it's ${inl("1 + 1 = 2")}. Conjugating a unit-length number turns it backward, so ${inl("\\overline{\\omega^a}\\,\\omega^b = \\omega^{b-a}")}.</p>
     <p>Now build vectors out of the roots. The <b>Fourier vector</b> ${inl("f_k")} has entries ${inl("1, \\omega^k, \\omega^{2k}, \\dots")}: it turns ${inl("k")} steps at a time. Draw each entry as a little clock hand and ${inl("f_k")} is a row of hands spinning at speed ${inl("k")}. That's a wave.</p>`));
 

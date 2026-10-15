@@ -35,7 +35,7 @@ export function mount(root) {
   let n = 3, playing = false, tAcc = 0, K = 2;
 
   root.append(prose(`
-    <p>Last lesson ended with LTI systems: linear and time-invariant. Here's why they're special. Feed one in a single impulse ${inl("\\delta[n]")} and call what comes out ${inl("h[n]")}, the <b>impulse response</b>. That one signal tells you what the system does to <i>any</i> input.</p>
+    <p>Last lesson ended with LTI systems: linear and time-invariant. Feed one a single impulse ${inl("\\delta[n]")} and call what comes out ${inl("h[n]")}, the <b>impulse response</b>. That one signal tells you what the system does to <i>any</i> input.</p>
     <p>The reason is the first lesson's idea. Any input is a combination of shifted impulses: ${inl("x = \\sum_k x[k]\\,\\delta[n-k]")}. Time-invariant means a shifted impulse gives a shifted ${inl("h")}. Linear means a combination of inputs gives the same combination of outputs. Put those together and the output is a combination of shifted copies of ${inl("h")}:</p>`));
   root.append(el("div", { class: "conv-eq", html: inl("y[n] = \\sum_k x[k]\\, h[n-k]") }));
   root.append(prose(`<p>That sum is <b>convolution</b>, written ${inl("y = x * h")}. Below are three ways to watch it happen. Drag up and down on the x and h plots to draw your own.</p>`));
@@ -194,7 +194,7 @@ export function mount(root) {
     const yn = n >= 0 && n < NY ? y[n] : 0;
     read1.innerHTML = n < 0 || n >= NY
       ? `At n = ${n}, h[n − k] doesn't overlap x at all, so y[${n}] = 0.`
-      : `y[${n}] = ${used.map(([v]) => fmt(v, 2)).join(" + ").replace(/\+ -/g, "− ")} = <b>${fmt(yn, 2)}</b>`;
+      : `<span class="mono">y[${n}] = ${used.map(([v]) => fmt(v, 2)).join(" + ").replace(/\+ -/g, "− ")} = <b>${fmt(yn, 2)}</b></span>`;
     m.set("yn", n < 0 || n >= NY ? `y[${n}] = 0`
       : `y[${n}] = ${used.map(([, k]) => `x[${k}]\\,h[${n - k}]`).join(" + ")} = ${num(yn)}`);
     const xk = K > 0 ? x[K - 1] : 0;

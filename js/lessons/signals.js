@@ -73,7 +73,7 @@ export function mount(root) {
     controls(sShift.el, sA.el, sM.el, sL.el, presets), status));
 
   root.append(tryIt([
-    "Shift with n₀ = 3. The signal moves 3 steps to the right: it happens later. A minus sign inside the brackets means a delay, which trips everyone up at first.",
+    "Shift with n₀ = 3. The signal moves 3 steps to the right: it happens later. A minus sign inside the brackets means a delay, which is easy to get backwards.",
     "Downsample by 2. Every other sample is thrown away, and the signal gets half as long. You can't get those samples back.",
     "Upsample by 2. Zeros go in between the samples. Nothing is lost: downsampling by 2 afterward gives back the original.",
   ]));
@@ -81,7 +81,7 @@ export function mount(root) {
   /* ---------- Figure 2: even and odd parts ---------- */
   root.append(prose(`
     <p>Every signal splits into an <b>even</b> part, which is the same when flipped (${inl("x_e[-n] = x_e[n]")}), plus an <b>odd</b> part, which flips sign when flipped (${inl("x_o[-n] = -x_o[n]")}). Average the signal with its flip to get the even part; take half the difference for the odd part.</p>
-    <p>The even and odd parts are perpendicular to each other. So the <b>energy</b>, the sum of squares (the squared length of the vector), splits cleanly too: ${inl("E_x = E_e + E_o")}. That's Pythagoras, in 25 dimensions.</p>`));
+    <p>The even and odd parts are perpendicular to each other. So the <b>energy</b>, the sum of squares (the squared length of the vector), splits cleanly too: ${inl("E_x = E_e + E_o")}. That's the Pythagorean theorem in 25 dimensions.</p>`));
   const fe = figure({ x: [-VIEW - 0.6, VIEW + 0.6], y: [-2.2, 2.2], aspect: 1.9, xTicks: 4, vAxis: false, cap: "The even part x_e[n]: a mirror image about n = 0." });
   const fo = figure({ x: [-VIEW - 0.6, VIEW + 0.6], y: [-2.2, 2.2], aspect: 1.9, xTicks: 4, vAxis: false, cap: "The odd part x_o[n]: a mirror image, flipped upside down." });
   fe.plot.draw((q) => {
@@ -98,7 +98,7 @@ export function mount(root) {
   /* ---------- Figure 3: continuous time, x(at + b) ---------- */
   root.append(prose(`
     <p>A <b>continuous-time signal</b> ${inl("x(t)")} takes any real ${inl("t")}, written with round brackets. The same moves apply, plus stretching and squeezing time: ${inl("x(2t)")} plays twice as fast, ${inl("x(t/2)")} half as fast.</p>
-    <p>The classic trap is ${inl("x(at + b)")}. The safe way to build it: first shift, ${inl("x(t + b)")}, then replace ${inl("t")} by ${inl("at")}. Scaling first and shifting second gives ${inl("x(a(t + b))")}, a different signal.</p>`));
+    <p>The common mistake is with ${inl("x(at + b)")}. The safe way to build it: first shift, ${inl("x(t + b)")}, then replace ${inl("t")} by ${inl("at")}. Scaling first and shifting second gives ${inl("x(a(t + b))")}, a different signal.</p>`));
   let a = 2, b = 1, showWrong = true;
   const fc = figure({ x: [-4, 4], y: [-0.25, 1.25], aspect: 2.6, xTicks: 1,
     cap: "Gray is x(t): a ramp, then a shelf. Orange is x(at + b). Dashed purple is the mistake, x(a(t + b))." });

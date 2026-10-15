@@ -49,7 +49,7 @@ export function mount(root) {
 
   root.append(prose(`
     <p>Lesson 5 showed the easy way to find coordinates: in an orthogonal basis, each coefficient is just a dot product with one basis vector. Lesson 14 showed which basis an LTI system likes: the Fourier vectors ${inl("v_k[n] = e^{2\\pi i k n/N}")}. Put those together and you have the <b>DFT</b>, the discrete Fourier transform.</p>
-    <p>The DFT takes the ${inl("N")} numbers of a signal and gives back ${inl("N")} new numbers ${inl("X[k]")}: how much of each Fourier wave is in it. It's nothing more than a change of basis, from impulses to waves. Every coefficient is one inner product, and the waves are orthogonal, so the coefficients don't interfere with each other.</p>`));
+    <p>The DFT takes the ${inl("N")} numbers of a signal and gives back ${inl("N")} new numbers ${inl("X[k]")}: how much of each Fourier wave is in it. It's a change of basis, from impulses to waves. Every coefficient is one inner product, and the waves are orthogonal, so the coefficients don't interfere with each other.</p>`));
 
   /* ---------- Signal and the selected basis wave ---------- */
   const fx = figure({ x: [-0.6, 7.6], y: [-2, 2], aspect: asp(2.4), xTicks: tk(1), vAxis: false, cap: "The signal x[n]. Drag up and down to edit it. The faint waves are the Fourier vector for the selected k: real part green, imaginary part purple." });
@@ -129,7 +129,7 @@ export function mount(root) {
     readK));
 
   /* ---------- Rebuild ---------- */
-  root.append(prose(`<p>Going back is the same trick in reverse: ${inl("x")} is the sum of the waves, each scaled by its coefficient (and divided by ${inl("N")}). Pick which coefficients to keep and watch the signal come back, one wave at a time. Each ${inl("k")} above ${inl("N/2")} is the same wave as ${inl("N-k")}, turning the other way, so a real signal needs them in pairs.</p>`));
+  root.append(prose(`<p>Going back works the same way in reverse: ${inl("x")} is the sum of the waves, each scaled by its coefficient (and divided by ${inl("N")}). Pick which coefficients to keep and watch the signal come back, one wave at a time. Each ${inl("k")} above ${inl("N/2")} is the same wave as ${inl("N-k")}, turning the other way, so a real signal needs them in pairs.</p>`));
   const chips = el("div", { class: "dft-chips", role: "group", "aria-label": "Coefficients to keep" });
   const fR = figure({ x: [-0.6, 7.6], y: [-2, 2], aspect: asp(2.4), xTicks: tk(1), vAxis: false, cap: "Rings: the original samples. Orange: the signal rebuilt from the kept coefficients, with the smooth curve through it. Dashed green: the wave you added last." });
   plots.push(fR.plot);
@@ -167,7 +167,7 @@ export function mount(root) {
       note: "The inverse: add up the waves, each scaled by its coefficient." },
     { tex: "X = F x, \\qquad F_{kn} = w^{kn}, \\quad w = e^{-2\\pi i/N}", note: "The DFT is one matrix times the signal. Each entry is a power of w, the clock hand in the grid." },
     { tex: "F^{*} F = N\\, I \\quad\\Rightarrow\\quad F^{-1} = \\tfrac{1}{N} F^{*}",
-      note: "The columns are orthogonal and each has length √N, so the inverse is just the conjugate transpose over N. No elimination needed." },
+      note: "The columns are orthogonal and each has length √N, so the inverse is the conjugate transpose over N, with no elimination needed." },
     { id: "ff", tex: "" },
     { tex: "x \\text{ real} \\;\\Rightarrow\\; X[N-k] = \\overline{X[k]}",
       note: "For a real signal the second half of the coefficients mirrors the first: same size, opposite phase." },
