@@ -43,6 +43,7 @@
   --font-sans: "Hyper", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Hyper Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
+  --text-xs: 0.75rem;        /* small labels: table cells, chips, readouts */
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
@@ -102,6 +103,8 @@ a { color: var(--accent); }
 .subtle { color: var(--fg-subtle); }
 .small { font-size: var(--text-sm); line-height: 1.5; }
 [hidden] { display: none !important; }
+/* One size for every superscript and subscript, instead of a fraction of whatever surrounds it. */
+sub, sup { font-size: var(--text-xs); }
 :focus-visible:not(input, select, textarea) { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 
 .eyebrow {
@@ -188,7 +191,7 @@ main { max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; }
 .lesson-nav { position: sticky; top: 80px; max-height: calc(100vh - 100px); overflow: auto; font-size: var(--text-sm); padding-right: 4px; }
 .lesson-nav details { border: 0; }
 .lesson-nav summary { display: none; }
-.lesson-nav .part { margin: 14px 0 4px; font-weight: 600; color: var(--blue); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.lesson-nav .part { margin: 14px 0 4px; font-weight: 600; color: var(--blue); font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase; }
 .lesson-nav .part:first-child { margin-top: 0; }
 .lesson-nav a { display: flex; gap: 8px; padding: 4px 8px; border-radius: 6px; color: var(--fg-muted); text-decoration: none; }
 .lesson-nav a:hover { background: var(--raised); color: var(--fg); }
@@ -214,7 +217,7 @@ main { max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; }
 /* Figures you drag on take the finger; the rest let the page scroll (see js/plot.js). */
 .fig canvas.draggable { touch-action: none; }
 .fig .cap { margin: 6px 2px 0; font-size: var(--text-sm); color: var(--fg-subtle); }
-.fig .readout { position: absolute; left: 10px; top: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in oklab, var(--panel) 85%, transparent); font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none; }
+.fig .readout { position: absolute; left: 10px; top: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in oklab, var(--panel) 85%, transparent); font-family: var(--font-mono); font-size: var(--text-xs); pointer-events: none; }
 .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 20px; margin-top: 14px; align-items: end; }
 .ctl label, .ctl .lbl { display: flex; justify-content: space-between; gap: 8px; font-size: var(--text-sm); font-weight: 600; }
 .ctl .val { font-family: var(--font-mono); font-weight: 400; color: var(--fg-muted); }

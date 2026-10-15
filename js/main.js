@@ -104,7 +104,7 @@ function showSources(id) {
   box.hidden = !list.length;
   box.replaceChildren();
   if (!list.length) return;
-  box.append(el("h2", { text: "Sources and further reading" }),
+  box.append(el("h2", { text: "Sources" }),
     el("ul", {}, ...list.map(([key, where]) => el("li", { html:
       `${SOURCES[key].short}, ${where}. <a href="#references" data-ref="${key}">Full reference</a>` }))));
 }

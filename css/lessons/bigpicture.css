@@ -17,7 +17,7 @@
   border-radius: 999px; border: 1.5px dashed var(--line-strong); background: transparent;
   font-size: var(--text-sm); line-height: 1.25; text-align: center;
 }
-.bp-arrow .g { font-size: 1.1rem; color: var(--accent); flex: none; }
+.bp-arrow .g { font-size: var(--text-base); color: var(--accent); flex: none; }
 .bp-map [aria-pressed="true"] { border-color: var(--accent); border-style: solid; outline: 2px solid var(--accent); outline-offset: 1px; }
 .bp-map button:hover { border-color: var(--fg); }
 .bp-empty { min-height: 0; }
@@ -26,9 +26,9 @@
 
 @media (max-width: 640px) {
   .bp-heads, .bp-map { grid-template-columns: 1fr 64px 1fr; gap: 6px; }
-  .bp-heads p { font-size: 0.7rem; }
+  .bp-heads p { font-size: var(--text-xs); }
   .bp-box { min-height: 64px; padding: 8px 6px; }
   .bp-box b { font-size: var(--text-sm); }
-  .bp-box span { font-size: 0.75rem; }
-  .bp-arrow { flex-direction: column; gap: 0; padding: 4px; font-size: 0.72rem; border-radius: 12px; }
+  .bp-box span { font-size: var(--text-xs); }
+  .bp-arrow { flex-direction: column; gap: 0; padding: 4px; font-size: var(--text-xs); border-radius: 12px; }
 }

@@ -6,6 +6,6 @@
 .dft-chips .chip {
   min-width: 52px; height: 32px; padding: 0 10px; border-radius: 999px; cursor: pointer;
   border: 1.5px solid var(--line-strong); background: var(--panel); color: var(--fg-muted);
-  font-family: var(--font-mono); font-size: 0.8rem;
+  font-family: var(--font-mono); font-size: var(--text-xs);
 }
 .dft-chips .chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); font-weight: 600; }
