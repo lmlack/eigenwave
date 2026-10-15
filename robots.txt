@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eigenwave.gwark.dev/sitemap.xml

@@ -1,0 +1,17 @@
+/* Lesson 12: the system picker, verdicts and the properties table. */
+.sys-pick .btn { min-height: 36px; padding: 0 14px; }
+.sys-formula { margin-top: 12px; font-size: var(--text-lg); }
+.verdict { margin: 10px 0 0; padding: 8px 12px; border-radius: 10px; font-size: var(--text-sm); }
+.verdict.ok { background: color-mix(in oklab, var(--green) 14%, var(--panel)); }
+.verdict.bad { background: color-mix(in oklab, var(--accent) 14%, var(--panel)); }
+.props { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.props th { text-align: left; white-space: nowrap; padding: 8px 12px 8px 0; vertical-align: top; }
+.props td { padding: 8px 12px 8px 0; vertical-align: top; color: var(--fg-muted); border-top: 1px solid var(--line); }
+.props th { border-top: 1px solid var(--line); }
+.props td.yes, .props td.no { font-weight: 700; white-space: nowrap; }
+.props td.yes { color: var(--green); }
+.props td.no { color: var(--accent); }
+.props tr.lti th, .props tr.lti td { border-top: 2px solid var(--line-strong); }
+@media (max-width: 640px) {
+  .props th, .props td { padding-right: 8px; }
+}

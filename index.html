@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eigenwave</title>
+<meta name="description" content="Interactive pages from linear algebra to the Fourier transform: vectors, bases, eigenvectors, complex numbers, signals and systems, convolution, the DFT, FFT, filtering, sampling, and the Laplace and z-transforms.">
+<meta property="og:title" content="eigenwave">
+<meta property="og:description" content="From linear algebra to the Fourier transform, one interactive page at a time.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="gwark.dev">
+<link rel="canonical" href="https://eigenwave.gwark.dev/">
+<meta property="og:url" content="https://eigenwave.gwark.dev/">
+<meta property="og:image" content="https://eigenwave.gwark.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="eigenwave: from linear algebra to the Fourier transform. 27 interactive lessons.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/hyper-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // Before first paint, so the page never flashes the wrong theme.
+  try { if (localStorage.getItem("sb-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch {}
+</script>
+</head>
+<body>
+
+<div class="parent-bar">
+  <a href="https://gwark.dev/#projects"><img src="gwark-mark.svg" alt=""><span>A project of</span> <b>gwark.dev ↗</b></a>
+</div>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="#home" aria-label="eigenwave home">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M2 12h20" stroke="var(--line-strong)" stroke-width="1.2" opacity=".6"/>
+        <path d="M2.5 12c1.6-6.5 3.2-6.5 4.8 0s3.2 6.5 4.8 0 3.2-6.5 4.8 0 3.2 6.5 4.6 0" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="7.3" cy="12" r="1.8" fill="var(--accent)"/>
+      </svg>
+      <b class="wordmark">eigen<span>wave</span></b>
+    </a>
+    <div class="segmented theme-toggle" role="group" aria-label="Color theme">
+      <button type="button" data-theme-set="light" aria-pressed="true" aria-label="Light">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="theme-label">Light</span>
+      </button>
+      <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5Z" fill="currentColor"/></svg>
+        <span class="theme-label">Dark</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ======================= Home ======================= -->
+  <section id="home" data-view="home">
+    <div class="hero">
+      <p class="eyebrow">From linear algebra to the Fourier transform</p>
+      <h1>See how the Fourier transform works</h1>
+      <p class="lede">A signal is a list of numbers, so it's a vector. The Fourier transform writes that vector in a different basis, one made of waves. These pages build up to that, one idea at a time, and every page has something to drag, slide or play.</p>
+      <a class="btn solid big" href="#vectors">Start with vectors →</a>
+    </div>
+    <div class="course-map" id="course-map"></div>
+    <p class="small subtle refs">The order follows Gilbert Strang's <i>Introduction to Linear Algebra</i> and Oppenheim and Willsky's <i>Signals &amp; Systems</i>, with ideas from Steve Brunton's Fourier analysis lectures. The explanations and figures here are this site's own. <a href="#references">Full references</a>.</p>
+  </section>
+
+  <!-- ======================= References ======================= -->
+  <section id="references" data-view="references" hidden>
+    <div class="refs-page">
+      <p class="eyebrow">Sources</p>
+      <h1>References</h1>
+      <p class="lede">The topics and their order come from these books and papers. The explanations, figures and code on this site are its own. Each lesson ends with the chapters it draws on.</p>
+      <ol class="ref-list" id="ref-list"></ol>
+      <p class="small subtle">Chapter numbers refer to the editions listed. Section numbers are given where they were checked against the book's table of contents.</p>
+    </div>
+  </section>
+
+  <!-- ======================= Lesson ======================= -->
+  <section id="lesson" data-view="lesson" hidden>
+    <div class="lesson-layout">
+      <nav class="lesson-nav" id="lesson-nav" aria-label="Lessons"></nav>
+      <article class="lesson">
+        <header class="lesson-head">
+          <p class="eyebrow" id="lesson-part"></p>
+          <h1 id="lesson-title"></h1>
+        </header>
+        <div id="lesson-body"></div>
+        <aside class="sources" id="lesson-sources" aria-label="Sources for this lesson"></aside>
+        <footer class="lesson-foot">
+          <a class="btn" id="lesson-prev" href="#home">← Back</a>
+          <a class="btn solid" id="lesson-next" href="#home">Next →</a>
+        </footer>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Everything runs in your browser. Nothing is uploaded. · <a href="#references">References</a></p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

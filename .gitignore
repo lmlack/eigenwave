@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# Local working notes, kept out of the repo.
+PROGRESS.md

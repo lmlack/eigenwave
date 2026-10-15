@@ -1,0 +1,4 @@
+/* Lesson 19: the race result bars. */
+.race-row { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) 6em; gap: 10px; align-items: center; margin: 6px 0; }
+.race-row i { display: block; height: 14px; border-radius: 7px; }
+.race-row b { font-family: var(--font-mono); text-align: right; }

@@ -1,0 +1,9 @@
+/* Lesson 14: pickers, the verdict line and the circulant matrix heatmap. */
+.eig-pickers { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 4px; }
+.eig-pickers p { margin: 0 0 4px; }
+.eig-verdict { margin: 10px 0 0; padding: 8px 12px; border-radius: 10px; background: var(--raised); }
+.eig-matrix { margin-top: 12px; }
+.eig-matrix p { margin: 0 0 6px; }
+.eig-matrix table { border-collapse: collapse; margin: 0 auto; }
+.eig-matrix td { width: 22px; height: 22px; border: 1px solid var(--line); }
+.eig-matrix table.n16 td { width: 13px; height: 13px; }

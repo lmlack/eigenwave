@@ -1,0 +1,9 @@
+{
+  "name": "eigenwave",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/",
+    "serve": "python3 scripts/serve.py 5190"
+  }
+}
