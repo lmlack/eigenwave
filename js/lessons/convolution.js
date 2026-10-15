@@ -111,22 +111,49 @@ export function mount(root) {
   }, () => playing);
 
   /* ---------- View 2: copies of h ---------- */
-  const fS = figure({ x: [-0.6, NY - 0.4], y: [-3, 3], aspect: asp(2.6), xTicks: tk(1), vAxis: false, cap: "Orange: the sum of the first copies. Green: the copy just added, x[k]·h[n − k] for one k. Rings: the final y." });
+  // Each copy x[k]·h[n − k] is its own colored block, stacked at every n, so
+  // the output visibly builds up copy by copy. Positive parts stack up from
+  // zero, negative parts stack down. The newest copy is outlined.
+  const fS = figure({ x: [-0.6, NY - 0.4], y: [-3, 3], aspect: asp(2.6), xTicks: tk(1), vAxis: false,
+    cap: "Each colored block is one copy of h, scaled by x[k] and started at n = k. Stacked, they add up to y. The newest copy is outlined; the rings are the final y." });
   plots.push(fS.plot);
+  const copyColor = (c, k) => [c.blue, c.green, c.purple, c.gold][k % 4];
   fS.plot.draw((p) => {
-    const ns = Array.from({ length: NY }, (_, i) => i);
-    const partial = ns.map((m) => { let s = 0; for (let k = 0; k < K; k++) s += x[k] * hAt(m - k); return s; });
-    ns.forEach((m) => p.dot(m, y[m], { r: 6, color: "transparent", stroke: p.c.fgSubtle }));
-    p.stems(ns.map((m) => m - 0.12), partial, { color: p.c.accent });
-    if (K > 0) {
-      const k = K - 1;
-      p.stems(ns.map((m) => m + 0.12), ns.map((m) => x[k] * hAt(m - k)), { color: p.c.green, alpha: 0.85 });
+    const W = 0.62;
+    for (let m = 0; m < NY; m++) {
+      let up = 0, down = 0;
+      for (let k = 0; k < K; k++) {
+        const v = x[k] * hAt(m - k);
+        if (Math.abs(v) < 1e-9) continue;
+        const base = v > 0 ? up : down;
+        const newest = k === K - 1;
+        p.rect(m - W / 2, base, m + W / 2, base + v, { fill: copyColor(p.c, k), alpha: newest ? 0.95 : 0.55 });
+        if (newest) p.path([[m - W / 2, base], [m + W / 2, base], [m + W / 2, base + v], [m - W / 2, base + v]], { color: p.c.accent, width: 2.5, close: true });
+        if (v > 0) up += v; else down += v;
+      }
     }
+    for (let m = 0; m < NY; m++) p.dot(m, y[m], { r: 6, color: "transparent", stroke: p.c.fgSubtle });
   });
-  const sK = slider({ label: "Copies added", min: 0, max: NX, step: 1, value: K, format: (v) => `${v} of ${NX}`, onInput: (v) => { K = v; update(); } });
+  const sK = slider({ label: "Copies added", min: 0, max: NX, step: 1, value: K, format: (v) => `${v} of ${NX}`, onInput: (v) => { stopCopies(); K = v; update(); } });
+  // Play adds one copy every 0.8 s, starting over from none.
+  let copyTimer = 0;
+  const playCopies = button("Add copies one by one", () => {
+    if (copyTimer) { stopCopies(); return; }
+    K = 0; sK.set(0); update();
+    playCopies.textContent = "Stop";
+    copyTimer = setInterval(() => {
+      K += 1; sK.set(K); update();
+      if (K >= NX) stopCopies();
+    }, 800);
+  });
+  function stopCopies() {
+    if (copyTimer) clearInterval(copyTimer);
+    copyTimer = 0;
+    playCopies.textContent = "Add copies one by one";
+  }
   const read2 = el("p", { class: "small conv-read" });
   root.append(panel("View 2: a sum of shifted copies of h", prose(`<p>Turn the sum around: each input sample ${inl("x[k]")} starts its own copy of ${inl("h")}, scaled by ${inl("x[k]")} and starting at ${inl("k")}. The output is all those copies added up. This is superposition, straight from linearity.</p>`),
-    fS.el, controls(sK.el), read2));
+    fS.el, controls(sK.el, playCopies), read2));
 
   /* ---------- View 3: a matrix ---------- */
   const mat = el("div", { class: "conv-matrix" });
@@ -170,7 +197,12 @@ export function mount(root) {
       : `y[${n}] = ${used.map(([v]) => fmt(v, 2)).join(" + ").replace(/\+ -/g, "− ")} = <b>${fmt(yn, 2)}</b>`;
     m.set("yn", n < 0 || n >= NY ? `y[${n}] = 0`
       : `y[${n}] = ${used.map(([, k]) => `x[${k}]\\,h[${n - k}]`).join(" + ")} = ${num(yn)}`);
-    read2.textContent = K === 0 ? "No copies yet: the sum is zero." : K === NX ? "All the copies are in, and the sum is exactly y." : `Copy ${K} is x[${K - 1}] = ${fmt(x[K - 1], 2)} times h, starting at n = ${K - 1}.`;
+    const xk = K > 0 ? x[K - 1] : 0;
+    read2.textContent = K === 0
+      ? "No copies yet: the sum is zero. Slide right or press the button to add them."
+      : Math.abs(xk) < 1e-9
+        ? `Copy ${K}: x[${K - 1}] is 0, so this copy is all zeros and adds nothing.${K === NX ? " All the copies are in, and the sum is exactly y." : ""}`
+        : `Copy ${K} is x[${K - 1}] = ${fmt(xk, 2)} times h, starting at n = ${K - 1}.${K === NX ? " All the copies are in, and the sum is exactly y." : ""}`;
     drawMatrix();
     plots.forEach((p) => p.request());
   }
@@ -191,5 +223,5 @@ export function mount(root) {
   }
   update();
 
-  return { destroy() { plots.forEach((p) => p.destroy()); anim.stop(); } };
+  return { destroy() { plots.forEach((p) => p.destroy()); anim.stop(); stopCopies(); } };
 }
